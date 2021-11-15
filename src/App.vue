@@ -11,6 +11,18 @@
       :style="`left: ${item.x}vw; top: ${item.y}vh; position: fixed;`"
     >
       <img :src="`${publicPath}trees/${index + 1}.png`" width="150" />
+      <div class="ornament-container" style="left: 30%; top:40%;">
+        <div class="ornament-thread goorn"></div>
+        <div class="ornament goorn"></div>
+      </div>
+      <div class="ornament-container" style="left: 40%; top:20%;">
+        <div class="ornament-thread py"></div>
+        <div class="ornament py"></div>
+      </div>
+      <div class="ornament-container" style="left: 60%; top:50%;">
+        <div class="ornament-thread js"></div>
+        <div class="ornament js"></div>
+      </div>
     </div>
     <div class="snowflakes" aria-hidden="true">
       <div class="snowflake">

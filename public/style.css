@@ -116,6 +116,7 @@ input {
 .ornament-container {
   display: flex;
   flex-flow: column nowrap;
+  position: absolute;
 }
 
 .ornament {
@@ -134,7 +135,7 @@ input {
 
 .ornament-thread {
   width: 12px;
-  border-right: 1px solid white;
+  border-right: 3px solid gold;
 }
 
 .ornament-thread.goorn {
