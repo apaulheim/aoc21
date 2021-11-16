@@ -1,24 +1,13 @@
 <template>
   <div class="parent">
-    <div
+    <tree
       v-for="(item, index) in days"
-      :key="`tree${index}`"
-      :style="`left: ${item.x}vw; top: ${item.y}vh; position: fixed;`"
+      v-bind:key="`tree${index}`"
+      v-bind:x="item.x"
+      v-bind:y="item.y"
+      v-bind:index="index"
     >
-      <img :src="`${publicPath}trees/${index + 1}.png`" width="150" />
-      <div class="ornament-container" style="left: 20%; top:40%;">
-        <div class="ornament-thread goorn"></div>
-        <div class="ornament goorn"></div>
-      </div>
-      <div class="ornament-container" style="left: 40%; top:20%;">
-        <div class="ornament-thread py"></div>
-        <div class="ornament py"></div>
-      </div>
-      <div class="ornament-container" style="left: 60%; top:50%;">
-        <div class="ornament-thread js"></div>
-        <div class="ornament js"></div>
-      </div>
-    </div>
+    </tree>
     <snowflakes></snowflakes>
     <about></about>
   </div>
@@ -26,11 +15,13 @@
 
 <script>
 import About from "./About.vue";
+import Tree from "./Tree.vue";
 import Snowflakes from "./Snowflakes.vue";
 
 export default {
   components: {
     about: About,
+    tree: Tree,
     snowflakes: Snowflakes,
   },
   data() {
@@ -61,7 +52,6 @@ export default {
         { x: 40, y: 3 }, // 23
         { x: 3, y: 40 }, // 24
       ],
-      publicPath: process.env.BASE_URL,
     };
   },
 };
