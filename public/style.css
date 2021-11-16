@@ -1,9 +1,10 @@
 html,
 body {
   height: 100%;
-  color: black;
+  color: white;
   font-family: monospace;
   overflow: hidden;
+  background-color: #0f0f23;
 }
 
 a {
@@ -25,7 +26,6 @@ a {
   font-weight: normal;
   letter-spacing: 0.5em;
   margin-bottom: 10px;
-  text-shadow: 0 0 8px white;
   align-self: center;
 }
 .subtitle {
@@ -48,7 +48,6 @@ a {
   height: 50px;
   width: 50px;
   background-size: 32px;
-  background-color: white;
   background-position: center center;
   border-radius: 50%;
   align-self: center;
@@ -57,14 +56,10 @@ a {
 .aoc {
   background-image: url(aoc.png);
   background-color: #0f0f23;
-  background-size: 25px;
-  height: 32px;
-  width: 32px;
-  margin-top: 8px;
 }
 
 .vue {
-  margin-left: 18px;
+  margin-left: 10px;
   background-image: url(vue2.png);
 }
 
