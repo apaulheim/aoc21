@@ -1,17 +1,12 @@
 <template>
   <div class="parent">
-    <!-- <div class="center">
-      <div class="subtitle">Annis</div>
-      <div class="title">🎄 Advent of Code 🎄</div>
-      <div class="subtitle">2021</div>
-    </div> -->
     <div
       v-for="(item, index) in days"
-      :key="item.x"
+      :key="`tree${index}`"
       :style="`left: ${item.x}vw; top: ${item.y}vh; position: fixed;`"
     >
       <img :src="`${publicPath}trees/${index + 1}.png`" width="150" />
-      <div class="ornament-container" style="left: 30%; top:40%;">
+      <div class="ornament-container" style="left: 20%; top:40%;">
         <div class="ornament-thread goorn"></div>
         <div class="ornament goorn"></div>
       </div>
@@ -24,46 +19,20 @@
         <div class="ornament js"></div>
       </div>
     </div>
-    <div class="snowflakes" aria-hidden="true">
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/gift.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/tree.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/rudolph.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/snowman.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/plant.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/santa.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/reindeer.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/plant.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/hat.png`" width="20" />
-      </div>
-      <div class="snowflake">
-        <img :src="`${publicPath}christmas/sock.png`" width="20" />
-      </div>
-    </div>
-    <div class="vue"></div>
-    <div class="github"></div>
+    <snowflakes></snowflakes>
+    <about></about>
   </div>
 </template>
 
 <script>
+import About from "./About.vue";
+import Snowflakes from "./Snowflakes.vue";
+
 export default {
-  name: "App",
+  components: {
+    about: About,
+    snowflakes: Snowflakes,
+  },
   data() {
     return {
       days: [
