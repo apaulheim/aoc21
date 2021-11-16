@@ -21,6 +21,14 @@ a {
   justify-content: center;
 }
 
+.day {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
 .title {
   font-size: 18px;
   font-weight: normal;
@@ -81,32 +89,6 @@ a {
   min-height: 500px;
   text-align: center;
   font-weight: bold;
-}
-
-.days {
-  display: flex;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.day {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  border: 1px solid white;
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.date {
-  display: flex;
-  align-self: flex-end;
-  font-weight: bold;
-  font-size: 1.5em;
-  margin: 0.5em;
 }
 
 textarea {
