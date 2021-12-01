@@ -11,7 +11,12 @@
         <div class="right">
           <div class="subtitle">Input</div>
           <form action="/result/go/" method="POST">
-            <textarea name="body" rows="10" cols="50"></textarea>
+            <textarea
+              v-model="aocInput"
+              name="body"
+              rows="10"
+              cols="50"
+            ></textarea>
             <div class="buttons">
               <input
                 v-if="goAvailable"
@@ -63,6 +68,15 @@
 <script>
 import tree from "./Tree.vue";
 export default {
+  data() {
+    return {
+      aocInput: "",
+    };
+  },
+  async mounted() {
+    const msg = await await fetch("/api/message");
+    this.aocInput = msg;
+  },
   components: {
     tree,
   },
