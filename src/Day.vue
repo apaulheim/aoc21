@@ -10,50 +10,57 @@
         </div>
         <div class="right">
           <div class="subtitle">Input</div>
-          <form action="/result/go/" method="POST">
-            <textarea
-              v-model="aocInput"
-              name="body"
-              rows="10"
-              cols="50"
-            ></textarea>
-            <div class="buttons">
-              <input
-                v-if="goAvailable"
-                type="submit"
-                id="solvego"
-                value="Solve"
-              />
-              <input
-                v-if="pyAvailable"
-                type="submit"
-                value="Solve"
-                id="solvepy"
-                formaction="/result/py/"
-              />
-              <input
-                v-if="jsAvailable"
-                type="submit"
-                value="Solve"
-                id="solvejs"
-                formaction="/result/js/"
-              />
-              <p v-if="!goAvailable && !pyAvailable && !jsAvailable">
-                No solutions implemented yet
-              </p>
-            </div>
-          </form>
+          <textarea
+            v-model="aocInput"
+            name="input"
+            rows="10"
+            cols="50"
+          ></textarea>
+          <div class="buttons">
+            <input
+              v-if="goAvailable"
+              type="submit"
+              id="solvego"
+              value="Solve"
+            />
+            <input
+              v-if="pyAvailable"
+              type="submit"
+              value="Solve"
+              id="solvepy"
+            />
+            <input
+              v-if="jsAvailable"
+              type="submit"
+              value="Solve"
+              id="solvejs"
+              v-on:click="handleClick"
+            />
+            <p v-if="!goAvailable && !pyAvailable && !jsAvailable">
+              No solutions implemented yet
+            </p>
+          </div>
           <div class="result-container">
             <div class="result-row silver">
               <div class="star">&#9733;</div>
               <div>
-                <textarea name="res" rows="1" cols="44"></textarea>
+                <textarea
+                  name="res"
+                  rows="1"
+                  cols="44"
+                  v-model="silver"
+                ></textarea>
               </div>
             </div>
             <div class="result-row gold">
               <div class="star">&#9733;</div>
               <div>
-                <textarea name="res" rows="1" cols="44"></textarea>
+                <textarea
+                  name="res"
+                  rows="1"
+                  cols="44"
+                  v-model="gold"
+                ></textarea>
               </div>
             </div>
           </div>
@@ -71,11 +78,13 @@ export default {
   data() {
     return {
       aocInput: "",
+      silver: "",
+      gold: "",
     };
   },
   async mounted() {
-    const msg = await await fetch("/api/message");
-    this.aocInput = msg;
+    const { text } = await (await fetch("/api/aocinput?day=1")).json();
+    this.aocInput = text;
   },
   components: {
     tree,
@@ -104,6 +113,27 @@ export default {
         this.$store.state.days[this.$route.params.id - 1].langs.indexOf("js") !=
         -1
       );
+    },
+  },
+  methods: {
+    handleClick: function() {
+      if (this.aocInput.length > 0) {
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            input: this.aocInput.split("\r\n").join(";"),
+          }),
+        };
+        console.log(this.aocInput);
+        console.log(`/day${this.id}ts`);
+        fetch(`/api/day${this.id}ts`, requestOptions)
+          .then((response) => response.json())
+          .then((data) => {
+            this.silver = data.silver;
+            this.gold = data.gold;
+          });
+      }
     },
   },
 };

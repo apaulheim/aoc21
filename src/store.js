@@ -5,7 +5,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     days: [
-      { id: 1, x: 3, y: 3, langs: [] },
+      { id: 1, x: 3, y: 3, langs: ["js"] },
       { id: 2, x: 50, y: 70, langs: [] },
       { id: 3, x: 8, y: 70, langs: [] },
       { id: 4, x: 73, y: 70, langs: [] },

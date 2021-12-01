@@ -16,7 +16,7 @@ const httpTrigger: AzureFunction = async function(
       headers: {
         "Content-Type": "text/html",
       },
-      body: data,
+      body: { text: data },
     };
     context.done();
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="parent">
-    <div>{{ message }}</div>
+    <div></div>
     <tree
       v-for="day in this.$store.state.days"
       v-bind:key="`tree${day.id}`"
@@ -20,17 +20,6 @@
 import about from "./About.vue";
 import tree from "./Tree.vue";
 import snowflakes from "./Snowflakes.vue";
-let message = "";
-
-const get = async () => {
-  const res = await fetch("/api/aocinput");
-  console.log("res", res);
-  const j = await res.json();
-  console.log("res.json", j);
-  const { text } = j;
-  message = text;
-};
-get();
 
 export default {
   components: {
