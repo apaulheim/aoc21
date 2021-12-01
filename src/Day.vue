@@ -22,6 +22,7 @@
               type="submit"
               id="solvego"
               value="Solve"
+              v-on:click="handleGo"
             />
             <input
               v-if="pyAvailable"
@@ -40,7 +41,7 @@
               No solutions implemented yet
             </p>
           </div>
-          <div class="result-container">
+          <div v-if="!showGo" class="result-container">
             <div class="result-row silver">
               <div class="star">&#9733;</div>
               <div>
@@ -64,6 +65,13 @@
               </div>
             </div>
           </div>
+          <iframe
+            v-if="showGo"
+            frameborder="0"
+            width="100%"
+            height="500px"
+            src="https://replit.com/@apaulheim/aoc21go?embed=true"
+          ></iframe>
           <router-link to="/"
             ><input type="button" value="Back to calendar"
           /></router-link>
@@ -80,6 +88,7 @@ export default {
       aocInput: "",
       silver: "",
       gold: "",
+      showGo: false,
     };
   },
   async mounted() {
@@ -134,6 +143,9 @@ export default {
             this.gold = data.gold;
           });
       }
+    },
+    handleGo: function() {
+      this.showGo = !this.showGo;
     },
   },
 };

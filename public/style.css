@@ -3,13 +3,16 @@ body {
   height: 100%;
   color: white;
   font-family: monospace;
-  overflow: hidden;
   background-color: #0f0f23;
 }
 
 a {
   color: black;
   text-decoration: none;
+}
+
+iframe {
+  margin: 20px 0;
 }
 
 .footer {
