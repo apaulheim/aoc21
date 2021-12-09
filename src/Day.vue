@@ -127,11 +127,12 @@ export default {
   methods: {
     handleClick: function() {
       if (this.aocInput.length > 0) {
+        const linux = this.aocInput.indexOf("\r\n") == -1;
         const requestOptions = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            input: this.aocInput.split("\r\n").join(";"),
+            input: this.aocInput.split(linux ? "\n" : "\r\n").join(";"),
           }),
         };
         console.log(this.aocInput);
