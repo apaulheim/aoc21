@@ -9,20 +9,22 @@ const httpTrigger: AzureFunction = async function(
   const data = input
     .trim()
     .split(";")
-    .map((n) => parseInt(n));
+    .map((n: string) => parseInt(n));
 
   const res: StarResult = {
     silver: data.reduce(
-      (acc, n, i, arr) => (n > arr[i - 1] ? acc + 1 : acc),
+      (acc: number, n: number, i: number, arr: number[]) =>
+        n > arr[i - 1] ? acc + 1 : acc,
       0
     ),
-    gold: data.reduce((acc, n, i, arr) => (n > arr[i - 3] ? acc + 1 : acc), 0),
+    gold: data.reduce(
+      (acc: number, n: number, i: number, arr: number[]) =>
+        n > arr[i - 3] ? acc + 1 : acc,
+      0
+    ),
   };
 
-  context.res = {
-    // status: 200, /* Defaults to 200 */
-    body: res,
-  };
+  context.res.json(res);
 };
 
 export default httpTrigger;

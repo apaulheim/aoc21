@@ -11,14 +11,7 @@ const httpTrigger: AzureFunction = async function(
     try {
       data = await fs.readFile(`aocinput/day${day}.txt`, "utf8");
     } catch (e) {}
-    context.res = {
-      status: 200,
-      headers: {
-        "Content-Type": "text/html",
-      },
-      body: { text: data },
-    };
-    context.done();
+    context.res.json({ text: data });
   }
 };
 
