@@ -92,7 +92,7 @@ export default {
     };
   },
   async mounted() {
-    const { text } = await (await fetch("/api/aocinput?day=1")).json();
+    const { text } = await (await fetch(`/api/aocinput?day=${this.id}`)).json();
     this.aocInput = text;
   },
   components: {
