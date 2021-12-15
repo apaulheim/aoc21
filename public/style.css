@@ -152,6 +152,11 @@ input {
   height: 15px;
 }
 
+.ornament-thread.rs {
+  height: 10px;
+  width: 14px;
+}
+
 .ornament-thread.js {
   height: 8px;
 }
@@ -164,6 +169,19 @@ input {
 .ornament.py {
   background-image: url(icon-py.png);
   background-color: #fc8608;
+}
+
+.ornament.rs {
+  background-image: url(icon-crab.png);
+  padding: 0;
+  background-color: transparent;
+  background-size: 30px;
+  border-radius: revert;
+  background-position: center;
+  max-width: 30px;
+  max-height: 30px;
+  min-width: 30px;
+  min-height: 20px;
 }
 
 .ornament.js {
